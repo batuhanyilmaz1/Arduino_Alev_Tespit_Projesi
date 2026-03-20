@@ -6,7 +6,6 @@ import pyttsx3
 from datetime import datetime
 import time
 
-# --- AYARLAR ---
 SERI_PORT = 'COM3'
 BAUD_RATE = 9600
 
@@ -17,7 +16,6 @@ class YanginPaneli:
         self.root.geometry("700x500")
         self.root.config(bg="#1a1a1a")
         
-        # Üst Durum Paneli
         self.durum_frame = tk.Frame(self.root, bg="#222", height=150)
         self.durum_frame.pack(fill="x", padx=10, pady=10)
         
@@ -41,7 +39,6 @@ class YanginPaneli:
         self.yangin_var_mi = False
         self.log_ekle("Sistem başlatıldı. Arduino bağlantısı bekleniyor...")
 
-        # Arduino Dinleme Thread'i
         Thread(target=self.seri_dinle, daemon=True).start()
 
     def log_ekle(self, mesaj):
@@ -92,7 +89,6 @@ class YanginPaneli:
             else:
                 self.log_ekle(f"HATA: {e}")
 
-# Uygulamayı başlat
 if __name__ == "__main__":
     root = tk.Tk()
     app = YanginPaneli(root)
